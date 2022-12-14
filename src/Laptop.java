@@ -1,7 +1,6 @@
-import java.util.HashMap;
-import java.util.Map;
+
 import java.util.Random;
-import java.util.Scanner;
+
 
 /**
  * Это класс ноутбуков
@@ -76,7 +75,56 @@ public class Laptop {
                 HDDCapacity, operatingSystem, color, numberOfCores, frequency, screenResolution, diagonal, videoMemoryCapacity, price, discount, quantity);
     }
 
+    @Override
+    public boolean equals(Object object) {
+        Laptop obj = (Laptop) object;
+        boolean equal = false;
+        if(obj.ID > 0){
+            if (this.ID < obj.ID) return equal;
+        }
+        if (!obj.brand.equalsIgnoreCase("none")){
+            if (!this.brand.equals(obj.brand)) return equal;
+        }
+        if (obj.RAM > 0){
+            if (this.RAM < obj.RAM ) return equal;
+        }
+        if (obj.HDDCapacity > 0){
+            if (this.HDDCapacity < obj.HDDCapacity) return equal;
+        }
+        if (!obj.operatingSystem.equalsIgnoreCase("none")){
+            if (!this.operatingSystem.equals(obj.operatingSystem)) return equal;
+        }
+        if (!obj.color.equalsIgnoreCase("none")){
+            if (!this.color.equals(obj.color)) return equal;
+        }
+        if (obj.numberOfCores > 0){
+            if (this.numberOfCores < obj.numberOfCores) return equal;
+        }
+        if (obj.frequency > 0){
+            if (this.frequency < obj.frequency) return equal;
+        }
+        if (obj.screenResolution > 0){
+            if (this.screenResolution < obj.screenResolution) return equal;
+        }
+        if (obj.diagonal > 0){
+            if (this.diagonal < obj.diagonal) return equal;
+        }
+        if (obj.videoMemoryCapacity > 0){
+            if (this.videoMemoryCapacity < obj.videoMemoryCapacity) return equal;
+        }
+        if (obj.price > 0){
+            if (this.price < obj.price) return equal;
+        }
+        if (obj.discount > 0){
+            if (this.discount < obj.discount) return equal;
+        }
+        if (obj.quantity > 0){
+            if (this.quantity < obj.quantity) return equal;
+        }
 
+        equal = true;
+        return equal;
+    }
 
     public void setParams(int IDs,
                           String Brands,
@@ -115,33 +163,56 @@ public class Laptop {
     }
 
     public void setParam(String param, Object object){
-        if(param.equalsIgnoreCase("ram"))  this.RAM = (Integer) object;
-        else if (param.equalsIgnoreCase("id")) {
-            this.ID = (Integer) object;
+        if(param.equalsIgnoreCase("ram"))  {
+            if(Checker.isInteger(object)) {
+                RAM = Integer.parseInt((String) object);
+            }
+        } else if (param.equalsIgnoreCase("id")) {
+            if(Checker.isInteger(object)) {
+                ID = Integer.parseInt((String) object);
+            }
         } else if (param.equalsIgnoreCase("brand")) {
-            this.brand = (String) object;
+                brand = (String) object;
         } else if (param.equalsIgnoreCase("hddcapacity")) {
-            this.HDDCapacity = (Integer) object;
+            if(Checker.isInteger(object)) {
+                HDDCapacity = Integer.parseInt((String) object);
+            }
         } else if (param.equalsIgnoreCase("operatingsystem")){
             this.operatingSystem = (String) object;
         } else if (param.equalsIgnoreCase("color")) {
-            this.color = (String) object;
+            color = (String) object;
         } else if (param.equalsIgnoreCase("numberofcores")) {
-            this.numberOfCores = (Integer) object;
+            if(Checker.isInteger(object)) {
+                numberOfCores = Integer.parseInt((String) object);
+            }
         } else if (param.equalsIgnoreCase("frequency")) {
-            this.frequency = (Double) object;
+            if(Checker.isDouble(object)) {
+                frequency = Double.parseDouble((String) object);
+            }
         } else if (param.equalsIgnoreCase("screenresolution")) {
-            this.screenResolution = (Integer) object;
+            if(Checker.isInteger(object)) {
+                screenResolution = Integer.parseInt((String) object);
+            }
         } else if (param.equalsIgnoreCase("diagonal")) {
-            this.diagonal = (Integer) object;
+            if(Checker.isInteger(object)) {
+                diagonal = Integer.parseInt((String) object);
+            }
         } else if (param.equalsIgnoreCase("videomemorycapacity")) {
-            this.videoMemoryCapacity = (Integer) object;
+            if(Checker.isInteger(object)) {
+                videoMemoryCapacity = Integer.parseInt((String) object);
+            }
         } else if (param.equalsIgnoreCase("price")) {
-            this.price = (Integer) object;
+            if(Checker.isInteger(object)) {
+                price = Integer.parseInt((String) object);
+            }
         } else if (param.equalsIgnoreCase("discount")){
-            this.discount = (Integer) object;
+            if(Checker.isInteger(object)) {
+                discount = Integer.parseInt((String) object);
+            }
         } else if (param.equalsIgnoreCase("quantity")) {
-            this.quantity = (Integer) object;
+            if(Checker.isInteger(object)) {
+                quantity = Integer.parseInt((String) object);
+            }
         } else {
             System.out.println("Нет такого параметррра.");
         }

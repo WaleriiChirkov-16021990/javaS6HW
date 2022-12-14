@@ -22,4 +22,8 @@ public class Printer {
     public void printShop(List<Laptop> laptops){
         laptops.forEach(System.out::println);
     }
+
+    public void printLaptop(Laptop name){
+        name.toString();
+    }
 }

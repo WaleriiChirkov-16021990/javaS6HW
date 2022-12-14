@@ -95,8 +95,6 @@ public class Main {
                 10);
         Laptop notebook = new Laptop();
         List<Laptop> LaptopSet = new ArrayList<>(Arrays.asList( ntbk1, ntbk2, ntbk3, ntbk4, ntbk5, ntbk6  , notebook));
-//        Shop LaptopSet = new Shop(Arrays.asList( ntbk1, ntbk2, ntbk3, ntbk4, ntbk5, ntbk6  , notebook));
-
 
         ntbk1.setParams(16,
                 "HP_OMEN",
@@ -112,14 +110,25 @@ public class Main {
                 100_000,
                 5,
                 11);
-
-        new Printer().printShop(LaptopSet);
-        Scanner scanner = new Scanner(System.in);
-        Map <Object, Object> category = new Filter().getCriteriy(scanner);
-        new Printer().printMap(category);
-        HashSet<Object> resultLaptop = new Filter().getFilterObject(LaptopSet, category);
-        System.out.println("=========______++++++++=========");
-        new Printer().printHashSet(resultLaptop);
-        scanner.close();
+        Shop shop = new Shop();
+        while (true){
+            shop.Application();
+            Scanner scanner = new Scanner(System.in);
+            String string = scanner.nextLine();
+            if (string.equals("1")){
+                new Printer().printShop(LaptopSet);
+            } else if (string.equals("2")) {
+            Laptop category = new Filter().getCriteriy(scanner);
+            new Printer().printLaptop(category);
+            HashSet filterObject = new Filter().getFilterObject(LaptopSet, category);
+            System.out.println("=========______++++++++=========");
+            System.out.println("Ищу   ие позиции...\n");
+            new Printer().printHashSet(filterObject);
+            } else if (string.equals("3")) {
+                System.out.println("ДО встречи!");
+                scanner.close();
+                break;
+            } else System.out.println("Нет такого пункта.");
+        }
     }
 }

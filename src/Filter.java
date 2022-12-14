@@ -1,7 +1,8 @@
 import java.util.*;
 
 public class Filter extends Laptop {
-    public Map<Object, Object> getCriteriy(Scanner scanner){
+    static String[] filters;
+    public Laptop getCriteriy(Scanner scanner){
         Laptop getCritery = new Laptop();
         Map<Object, Object> Criteriy = new HashMap<>();
         Criteriy.put(0, "ID");
@@ -21,27 +22,33 @@ public class Filter extends Laptop {
         new Printer().printMap(Criteriy);
         System.out.print("Выберети фильтр цифрой ( можно несколько через пробел ) : ");
         String[] input = scanner.nextLine().split(" ");
-        Map<Object, Object> inputCategory = new HashMap<>();
+        Filter.filters = input;
         String filter;
         for (String s:
                 input) {
-            System.out.printf("Введите значение по %s \n", Criteriy.get(Integer.parseInt(s)));
-            filter = scanner.nextLine();
-            getCritery.setParam(s, filter);
-//            try {
-//                Double.parseDouble(filter);
-//            } catch (NumberFormatException e) {
-//                try{
-//                    Integer.parseInt(filter);
-//                } catch (NumberFormatException ex){
-//
-//                    }
-//                }
+            if (Checker.isInteger(s)) {
+                if (Criteriy.containsKey(Integer.parseInt(s))) {
+                    System.out.printf("Введите значение по %s \n", Criteriy.get(Integer.parseInt(s)));
+                    filter = scanner.nextLine();
+                    getCritery.setParam((String) Criteriy.get(Integer.parseInt(s)), (Object) filter);
+                } else System.out.println("Нет такого ключа");
+            } else System.out.printf("Вы ввели не число: %s \n", s);
 
-            inputCategory.put(Criteriy.get(Integer.parseInt(s)), filter);
+//            inputCategory.put(Criteriy.get(Integer.parseInt(s)), filter);
         }
-        return inputCategory;
+        return getCritery;
     }
+
+    public HashSet<Object> getFilterObject(List<Laptop> object, Laptop category){
+        HashSet<Object> result = new HashSet<>();
+        for (Laptop s: object){
+            if (s.equals(category)){
+                result.add(s);
+            }
+        }
+        return result;
+    }
+
 //    public HashSet<Object> getFilterObject(List<Laptop> object, Map<Object,Object> category){
 //        HashSet<Object> result = new HashSet<>();
 //        for (Map.Entry<Object, Object> entry: category.entrySet()
