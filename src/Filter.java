@@ -35,8 +35,15 @@ public class Filter extends Laptop {
                 input) {
             if (Checker.isInteger(s)) {
                 if (Criteriy.containsKey(Integer.parseInt(s))) {
-                    System.out.printf("Введите значение по %s \n", Criteriy.get(Integer.parseInt(s)));
-                    filter = scanner.nextLine();
+                    while (true) {
+                        System.out.printf("Введите значение по %s \n", Criteriy.get(Integer.parseInt(s)));
+                        filter = scanner.nextLine();
+                        if(Checker.isTrue(Criteriy.get(Integer.parseInt(s)), filter)){
+                            break;
+                        } else {
+                            System.out.println("вы ввели неверное значение параметра.");
+                        }
+                    }
                     getCritery.setParam((String) Criteriy.get(Integer.parseInt(s)), filter);
                 } else System.out.println("Нет такого ключа");
             } else System.out.printf("Вы ввели не число: %s \n", s);

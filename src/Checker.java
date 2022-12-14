@@ -28,4 +28,24 @@ public class Checker {
         }
         return true;
     }
+    
+    /**
+     * Метод проверки актуальности ввода значения фильтра пользователем.
+     * @param obj - поле фильтрации ноутбуков.
+     * @param newValue - минимальное значение фильтрации.
+     * @return - истина или ложь.
+     */
+    public static boolean isTrue(Object obj, String newValue){
+        String field = (String) obj;
+        if (field.equalsIgnoreCase("brand") ||
+                field.equalsIgnoreCase("color") ||
+                field.equalsIgnoreCase("operatingSystem")){
+            if (!Checker.isInteger(newValue) && !Checker.isDouble(newValue)) return true;
+        } else if (field.equalsIgnoreCase("frequency")) {
+            if(Checker.isDouble(newValue)) return true;
+        } else {
+            if (Checker.isInteger(newValue)) return true;
+        }
+        return false;
+    }
 }
