@@ -3,7 +3,7 @@ import java.util.Random;
 
 
 /**
- * Это класс ноутбуков
+ * Класс описывает ноутбуки
  */
 public class Laptop {
     private int ID;
@@ -20,14 +20,27 @@ public class Laptop {
     private int price;
     private int discount;
     private int quantity;
-
+    
     /**
-     * описываем сущность ноутбуков
      *
-     *
+     * @param IDs - ИД ноутбука
+     * @param Brands - Брэнд производителя ноутбука
+     * @param RAMs - размер оперативной памяти в ГБ.
+     * @param HDDCapacitys - объём жёсткого диска в ГБ.
+     * @param operatingSystems - операционная система
+     * @param colors - цвет корпуса ноутбука
+     * @param numberOfCoress - количество ядер (шт.)
+     * @param frequencys - тактовая частота ядра (ГГц)
+     * @param screenResolutions - разрешение экрана (всего пикс.)
+     * @param diagonals - диагональ экрана в дюймах
+     * @param videoMemoryCapacitys - объём видеопамяти в ГБ.
+     * @param prices - цена в рублях.
+     * @param discounts - максимальная скидка от цены в рублях. (%)
+     * @param quantitys - остаток на складе ( шт.)
      */
 
 
+    
     public Laptop(int IDs ,String Brands, int RAMs, int HDDCapacitys, String operatingSystems, String colors, int numberOfCoress, double frequencys, int screenResolutions, int diagonals, int videoMemoryCapacitys, int prices, int discounts, int quantitys){
         if(IDs > 0) ID = IDs;
         else {
@@ -50,7 +63,7 @@ public class Laptop {
         discount = discounts;
         quantity = quantitys;
     }
-
+    
     public Laptop(){
         Random rnd = new Random();
         ID = rnd.nextInt(-1000, 0);
@@ -78,52 +91,49 @@ public class Laptop {
     @Override
     public boolean equals(Object object) {
         Laptop obj = (Laptop) object;
-        boolean equal = false;
         if(obj.ID > 0){
-            if (this.ID < obj.ID) return equal;
+            if (this.ID < obj.ID) return false;
         }
         if (!obj.brand.equalsIgnoreCase("none")){
-            if (!this.brand.equals(obj.brand)) return equal;
+            if (!this.brand.equalsIgnoreCase(obj.brand)) return false;
         }
         if (obj.RAM > 0){
-            if (this.RAM < obj.RAM ) return equal;
+            if (this.RAM < obj.RAM ) return false;
         }
         if (obj.HDDCapacity > 0){
-            if (this.HDDCapacity < obj.HDDCapacity) return equal;
+            if (this.HDDCapacity < obj.HDDCapacity) return false;
         }
         if (!obj.operatingSystem.equalsIgnoreCase("none")){
-            if (!this.operatingSystem.equals(obj.operatingSystem)) return equal;
+            if (!this.operatingSystem.equalsIgnoreCase(obj.operatingSystem)) return false;
         }
         if (!obj.color.equalsIgnoreCase("none")){
-            if (!this.color.equals(obj.color)) return equal;
+            if (!this.color.equalsIgnoreCase(obj.color)) return false;
         }
         if (obj.numberOfCores > 0){
-            if (this.numberOfCores < obj.numberOfCores) return equal;
+            if (this.numberOfCores < obj.numberOfCores) return false;
         }
         if (obj.frequency > 0){
-            if (this.frequency < obj.frequency) return equal;
+            if (this.frequency < obj.frequency) return false;
         }
         if (obj.screenResolution > 0){
-            if (this.screenResolution < obj.screenResolution) return equal;
+            if (this.screenResolution < obj.screenResolution) return false;
         }
         if (obj.diagonal > 0){
-            if (this.diagonal < obj.diagonal) return equal;
+            if (this.diagonal < obj.diagonal) return false;
         }
         if (obj.videoMemoryCapacity > 0){
-            if (this.videoMemoryCapacity < obj.videoMemoryCapacity) return equal;
+            if (this.videoMemoryCapacity < obj.videoMemoryCapacity) return false;
         }
         if (obj.price > 0){
-            if (this.price < obj.price) return equal;
+            if (this.price < obj.price) return false;
         }
         if (obj.discount > 0){
-            if (this.discount < obj.discount) return equal;
+            if (this.discount < obj.discount) return false;
         }
         if (obj.quantity > 0){
-            if (this.quantity < obj.quantity) return equal;
+            if (this.quantity < obj.quantity) return false;
         }
-
-        equal = true;
-        return equal;
+        return true;
     }
 
     public void setParams(int IDs,
@@ -218,39 +228,39 @@ public class Laptop {
         }
     }
 
-
-    public Object GetterParam(String param){
-        if(param.equals("RAM")) return this.RAM;
-        else if (param.equalsIgnoreCase("id")) {
-            return this.ID;
-        } else if (param.equalsIgnoreCase("brand")) {
-            return this.brand;
-        } else if (param.equalsIgnoreCase("hddcapacity")) {
-            return (Integer) this.HDDCapacity;
-        } else if (param.equalsIgnoreCase("operatingsystem")){
-            return this.operatingSystem;
-        } else if (param.equalsIgnoreCase("color")) {
-            return this.color;
-        } else if (param.equalsIgnoreCase("numberofcores")) {
-            return this.numberOfCores;
-        } else if (param.equalsIgnoreCase("frequency")) {
-            return  this.frequency;
-        } else if (param.equalsIgnoreCase("screenresolution")) {
-            return  this.screenResolution;
-        } else if (param.equalsIgnoreCase("diagonal")) {
-            return this.diagonal;
-        } else if (param.equalsIgnoreCase("videomemorycapacity")) {
-            return this.videoMemoryCapacity;
-        } else if (param.equalsIgnoreCase("price")) {
-            return  this.price;
-        } else if (param.equalsIgnoreCase("discount")){
-            return this.discount;
-        } else if (param.equalsIgnoreCase("quantity")) {
-            return this.quantity;
-        }
-        System.out.println("Нет такого параметррра.");
-        return false;
-    }
+// рабочий геттер, но не успел написать применение, а конкретно по заданию он не нужен.
+//    public Object GetterParam(String param){
+//        if(param.equals("RAM")) return this.RAM;
+//        else if (param.equalsIgnoreCase("id")) {
+//            return this.ID;
+//        } else if (param.equalsIgnoreCase("brand")) {
+//            return this.brand;
+//        } else if (param.equalsIgnoreCase("hddcapacity")) {
+//            return (Integer) this.HDDCapacity;
+//        } else if (param.equalsIgnoreCase("operatingsystem")){
+//            return this.operatingSystem;
+//        } else if (param.equalsIgnoreCase("color")) {
+//            return this.color;
+//        } else if (param.equalsIgnoreCase("numberofcores")) {
+//            return this.numberOfCores;
+//        } else if (param.equalsIgnoreCase("frequency")) {
+//            return  this.frequency;
+//        } else if (param.equalsIgnoreCase("screenresolution")) {
+//            return  this.screenResolution;
+//        } else if (param.equalsIgnoreCase("diagonal")) {
+//            return this.diagonal;
+//        } else if (param.equalsIgnoreCase("videomemorycapacity")) {
+//            return this.videoMemoryCapacity;
+//        } else if (param.equalsIgnoreCase("price")) {
+//            return  this.price;
+//        } else if (param.equalsIgnoreCase("discount")){
+//            return this.discount;
+//        } else if (param.equalsIgnoreCase("quantity")) {
+//            return this.quantity;
+//        }
+//        System.out.println("Нет такого параметррра.");
+//        return false;
+//    }
 
 
 

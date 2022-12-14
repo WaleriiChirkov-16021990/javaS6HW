@@ -1,7 +1,14 @@
 import java.util.*;
 
 public class Filter extends Laptop {
+    
     static String[] filters;
+    
+    /**
+     * Класс фильтрует коллекцию экземплятор класса ноутбук, фильтрует экземпляры по требуемуему фильтру.
+     * @param scanner
+     * @return HashSet<Object> отфильтрованных экземпляров из входящей коллекции.
+     */
     public Laptop getCriteriy(Scanner scanner){
         Laptop getCritery = new Laptop();
         Map<Object, Object> Criteriy = new HashMap<>();
@@ -30,11 +37,9 @@ public class Filter extends Laptop {
                 if (Criteriy.containsKey(Integer.parseInt(s))) {
                     System.out.printf("Введите значение по %s \n", Criteriy.get(Integer.parseInt(s)));
                     filter = scanner.nextLine();
-                    getCritery.setParam((String) Criteriy.get(Integer.parseInt(s)), (Object) filter);
+                    getCritery.setParam((String) Criteriy.get(Integer.parseInt(s)), filter);
                 } else System.out.println("Нет такого ключа");
             } else System.out.printf("Вы ввели не число: %s \n", s);
-
-//            inputCategory.put(Criteriy.get(Integer.parseInt(s)), filter);
         }
         return getCritery;
     }
@@ -48,32 +53,4 @@ public class Filter extends Laptop {
         }
         return result;
     }
-
-//    public HashSet<Object> getFilterObject(List<Laptop> object, Map<Object,Object> category){
-//        HashSet<Object> result = new HashSet<>();
-//        for (Map.Entry<Object, Object> entry: category.entrySet()
-//             ) {
-//            String key = (String) entry.getKey();
-//            System.out.println(key);
-//            Object value = entry.getValue();
-//            System.out.println(value);
-//            for (Laptop s: object
-//                 ) {
-//                System.out.println(s.GetterParam(key) == value);
-//                System.out.println(s.GetterParam(key).getClass().getName());
-//                if ( s.GetterParam(key).equals(value) ){
-//                    result.add(s);
-//                }
-//                if (result.size() > 0){
-//                    for (Object obj: result
-//                         ) {
-//                        if (s.GetterParam(key) != value){
-//                            result.remove(obj);
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        return result;
-//    }
 }

@@ -1,6 +1,10 @@
 import java.util.*;
 
 public class Printer {
+    /**
+     * Класс вывода на экран, полученные коллекции.
+     * @param hashSet - вывод коллекции в консоль
+     */
 
     public void printHashSet(HashSet<Object> hashSet){
         hashSet.forEach(System.out::println);

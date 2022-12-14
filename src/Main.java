@@ -15,6 +15,11 @@
 import java.util.*;
 
 public class Main {
+    
+    /**
+     * Ключевой класс, запуск приложения.
+     * @param args -означает массив последовательности символов (строк), которые передаются в функцию "main". Это происходит при выполнении программы.
+     */
     public static void main(String[] args) {
         Laptop ntbk1 = new Laptop();
         Laptop ntbk2 = new Laptop(
@@ -122,8 +127,11 @@ public class Main {
             new Printer().printLaptop(category);
             HashSet filterObject = new Filter().getFilterObject(LaptopSet, category);
             System.out.println("=========______++++++++=========");
-            System.out.println("Ищу   ие позиции...\n");
+            System.out.println("Ищу подходящие позиции...\n");
+            if(filterObject.size() > 0){
             new Printer().printHashSet(filterObject);
+            } else System.out.println("Нет совпадений!\n");
+            filterObject = new HashSet();
             } else if (string.equals("3")) {
                 System.out.println("ДО встречи!");
                 scanner.close();
