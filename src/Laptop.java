@@ -22,7 +22,7 @@ public class Laptop {
     private int quantity;
     
     /**
-     *
+     * Конструктор экземпляра параметризированный.
      * @param IDs - ИД ноутбука
      * @param Brands - Брэнд производителя ноутбука
      * @param RAMs - размер оперативной памяти в ГБ.
@@ -64,6 +64,9 @@ public class Laptop {
         quantity = quantitys;
     }
     
+    /**
+     * Конструктор экземпляра класса "нулевой".
+     */
     public Laptop(){
         Random rnd = new Random();
         ID = rnd.nextInt(-1000, 0);
@@ -81,12 +84,23 @@ public class Laptop {
         discount = 0;
         quantity = 0;
     }
+    
+    /**
+     * toString для экземпляра класса Laptop
+     * @return String.format...
+     */
 
     @Override
     public String toString() {
         return String.format("\nИД : %d\n Бренд : %s\n Оперативная память : %d Гб.\n Объём жестког диска : %d Гб.\n Операционная система : %s\n Цвет : %s\n Количество ядер : %d\n Тактовая частота : %s Гц.\n Разрешение Экрана : %d пикс.\n Диагональ : %d дюймов\n Объём видеопамяти : %d Гб. \n Цена за 1 модель : %d рублей \n Максимально допустимая скидка : %d \n Остаток на складе : %d штук(а)\n", ID, brand,RAM,
                 HDDCapacity, operatingSystem, color, numberOfCores, frequency, screenResolution, diagonal, videoMemoryCapacity, price, discount, quantity);
     }
+    
+    /**
+     * equals - переопределённый под сравнение ноутбуков с эталоном по "активным параметрам".
+     * @param object - эталон для фильтрации.
+     * @return истина или ложь сравнения.
+     */
 
     @Override
     public boolean equals(Object object) {
@@ -135,7 +149,24 @@ public class Laptop {
         }
         return true;
     }
-
+    
+    /**
+     * Setter для экземпляра класса ноутбук. заполняет или изменяет созданный ранее экземпляр.
+     * @param IDs - ИД ноутбука
+     * @param Brands - Брэнд производителя ноутбука
+     * @param RAMs - размер оперативной памяти в ГБ.
+     * @param HDDCapacitys - объём жёсткого диска в ГБ.
+     * @param operatingSystems - операционная система
+     * @param colors - цвет корпуса ноутбука
+     * @param numberOfCoress - количество ядер (шт.)
+     * @param frequencys - тактовая частота ядра (ГГц)
+     * @param screenResolutions - разрешение экрана (всего пикс.)
+     * @param diagonals - диагональ экрана в дюймах
+     * @param videoMemoryCapacitys - объём видеопамяти в ГБ.
+     * @param prices - цена в рублях.
+     * @param discounts - максимальная скидка от цены в рублях. (%)
+     * @param quantitys - остаток на складе ( шт.)
+     */
     public void setParams(int IDs,
                           String Brands,
                           int RAMs,
@@ -171,7 +202,12 @@ public class Laptop {
         discount = discounts;
         quantity = quantitys;
     }
-
+    
+    /**
+     * Setter определенного параметра ранее созданного экземпляра.
+     * @param param - имя параметра.
+     * @param object - новое значение.
+     */
     public void setParam(String param, Object object){
         if(param.equalsIgnoreCase("ram"))  {
             if(Checker.isInteger(object)) {

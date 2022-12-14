@@ -5,9 +5,9 @@ public class Filter extends Laptop {
     static String[] filters;
     
     /**
-     * Класс фильтрует коллекцию экземплятор класса ноутбук, фильтрует экземпляры по требуемуему фильтру.
-     * @param scanner
-     * @return HashSet<Object> отфильтрованных экземпляров из входящей коллекции.
+     * Метод заполняет новый временный экземпляр класса ноутбук, для дальнейшей фильтрации экземпляров из коллекции по требуемуему фильтру(или фильтрам).
+     * @param scanner - принимает экземпляр класса Scanner.
+     * @return Laptop object - экземпляр из входящей информации для отсеивания "лишних" ноутбуков.
      */
     public Laptop getCriteriy(Scanner scanner){
         Laptop getCritery = new Laptop();
@@ -43,7 +43,13 @@ public class Filter extends Laptop {
         }
         return getCritery;
     }
-
+    
+    /**
+     *  метод сравнивает кажды йноутбук из коллекции с "эталонным".
+     * @param object - Список ноутбуков
+     * @param category - экземпляр для сравнения
+     * @return - HashSet<Object> - коллекция отфильтрованных ноутбуков
+     */
     public HashSet<Object> getFilterObject(List<Laptop> object, Laptop category){
         HashSet<Object> result = new HashSet<>();
         for (Laptop s: object){

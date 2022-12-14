@@ -17,7 +17,7 @@ import java.util.*;
 public class Main {
     
     /**
-     * Ключевой класс, запуск приложения.
+     * Ключевой метод, запуск приложения.
      * @param args -означает массив последовательности символов (строк), которые передаются в функцию "main". Это происходит при выполнении программы.
      */
     public static void main(String[] args) {
@@ -130,8 +130,8 @@ public class Main {
             System.out.println("Ищу подходящие позиции...\n");
             if(filterObject.size() > 0){
             new Printer().printHashSet(filterObject);
-            } else System.out.println("Нет совпадений!\n");
-            filterObject = new HashSet();
+            } else {System.out.println("Нет совпадений!\n");}
+            filterObject.clear();
             } else if (string.equals("3")) {
                 System.out.println("ДО встречи!");
                 scanner.close();
