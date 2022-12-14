@@ -1,6 +1,4 @@
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
+import java.util.*;
 
 public class Printer {
 
@@ -12,5 +10,16 @@ public class Printer {
     }
     public void printArray(Object[] array){
         System.out.println(Arrays.toString(array));
+    }
+
+    public void printList(List<Object> list) {
+        System.out.println(list);
+    }
+
+    public void printMap(Map<Object,Object> objectObjectMap){objectObjectMap.entrySet().forEach(System.out::println);
+    }
+
+    public void printShop(List<Laptop> laptops){
+        laptops.forEach(System.out::println);
     }
 }
